@@ -23,7 +23,7 @@ GPIO.setup(BTN_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 try:
     while True:
-        if GPIO.input(BTN_PIN) == False:
+        if GPIO.input(BTN_PIN) == GPIO.LOW:
             print("Button.Click"), strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
 except KeyboardInterrupt:
