@@ -15,12 +15,11 @@
 
 import RPi.GPIO as GPIO
 import time
-from time import gmtime, strftime
 
 GPIO.setmode(GPIO.BOARD)
 BTN_PIN = 11
 TIME_LAPSE = 0.2
-GPIO.setup(BTN_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(BTN_PIN, GPIO.IN)
 previousTime = time.time()
 
 try:
@@ -28,7 +27,7 @@ try:
         currentTime = time.time()
         if GPIO.input(BTN_PIN) == GPIO.LOW and (currentTime - previousTime) > TIME_LAPSE:
             previousTime = currentTime
-            print("Button.Click"), strftime("%Y-%m-%d %H:%M:%S", gmtime())
+            print("Button.Click"), time.strftime("%Y-%m-%d %H:%M:%S")
 
 except KeyboardInterrupt:
     print "Exception: KeyboardInterrupt"

@@ -15,18 +15,17 @@
 
 import RPi.GPIO as GPIO                 
 import time
-from time import gmtime, strftime
 
 GPIO.setmode(GPIO.BOARD)                
 BTN_PIN = 11
 LED_PIN = 12				
 BOUNCE_TIME = 200
 status = GPIO.LOW
-GPIO.setup(BTN_PIN, GPIO.IN,pull_up_down=GPIO.PUD_UP)
+GPIO.setup(BTN_PIN, GPIO.IN)
 GPIO.setup(LED_PIN, GPIO.OUT, initial=status) 
 
 def callback_function(channel):                                                 
-	print("Button.Click"), strftime("%Y-%m-%d %H:%M:%S", gmtime())
+	print("Button.Click"), time.strftime("%Y-%m-%d %H:%M:%S")
 	global status
 	if status == GPIO.LOW:
 		status = GPIO.HIGH

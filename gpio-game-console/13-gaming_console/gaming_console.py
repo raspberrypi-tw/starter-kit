@@ -17,7 +17,6 @@ import uinput
 import time
 import spidev
 import os
-from time import gmtime, strftime
 
 def callback_function(channel):    
     if channel == JUMP_PIN :
@@ -42,8 +41,8 @@ GPIO.setmode(GPIO.BOARD)
 JUMP_PIN = 12
 FIRE_PIN = 11
 BOUNCE_TIME = 200 
-GPIO.setup(JUMP_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(FIRE_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(JUMP_PIN, GPIO.IN)
+GPIO.setup(FIRE_PIN, GPIO.IN)
 
 events = (uinput.KEY_DOWN, uinput.KEY_UP, uinput.KEY_LEFT, uinput.KEY_RIGHT, uinput.KEY_X, uinput.KEY_Z, uinput.KEY_ENTER)
 device = uinput.Device(events)

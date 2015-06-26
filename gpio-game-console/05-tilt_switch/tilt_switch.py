@@ -15,15 +15,14 @@
 
 import RPi.GPIO as GPIO                 
 import time
-from time import gmtime, strftime
 
 GPIO.setmode(GPIO.BOARD)                
 BTN_PIN = 11
 BOUNCE_TIME = 200
-GPIO.setup(BTN_PIN, GPIO.IN,pull_up_down=GPIO.PUD_UP)
+GPIO.setup(BTN_PIN, GPIO.IN)
 
 def callback_function(channel):                                                 
-    print("Tilt.Switch"), strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    print("Tilt.Switch"), time.strftime("%Y-%m-%d %H:%M:%S")
 
 try:
     GPIO.add_event_detect(BTN_PIN, GPIO.FALLING, callback=callback_function, bouncetime=BOUNCE_TIME)

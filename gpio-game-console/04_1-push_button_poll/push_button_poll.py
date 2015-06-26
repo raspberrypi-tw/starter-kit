@@ -15,16 +15,15 @@
 
 import RPi.GPIO as GPIO
 import time
-from time import gmtime, strftime
 
 GPIO.setmode(GPIO.BOARD)
 BTN_PIN = 11
-GPIO.setup(BTN_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(BTN_PIN, GPIO.IN)
 
 try:
     while True:
         if GPIO.input(BTN_PIN) == GPIO.LOW:
-            print("Button.Click"), strftime("%Y-%m-%d %H:%M:%S", gmtime())
+            print("Button.Click"), time.strftime("%Y-%m-%d %H:%M:%S")
 
 except KeyboardInterrupt:
     print "Exception: KeyboardInterrupt"

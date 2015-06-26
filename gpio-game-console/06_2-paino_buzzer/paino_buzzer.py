@@ -15,7 +15,6 @@
 
 import RPi.GPIO as GPIO
 import time
-from time import gmtime, strftime
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -40,13 +39,13 @@ BOUNCE_TIME = 200
 DURATION = 0.2
 
 GPIO.setup(BUZZER_PIN, GPIO.OUT)
-GPIO.setup(BTN_PIN_0,  GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(BTN_PIN_1,  GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(BTN_PIN_2,  GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(BTN_PIN_3,  GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(BTN_PIN_4,  GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(BTN_PIN_5,  GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(BTN_PIN_6,  GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(BTN_PIN_0,  GPIO.IN)
+GPIO.setup(BTN_PIN_1,  GPIO.IN)
+GPIO.setup(BTN_PIN_2,  GPIO.IN)
+GPIO.setup(BTN_PIN_3,  GPIO.IN)
+GPIO.setup(BTN_PIN_4,  GPIO.IN)
+GPIO.setup(BTN_PIN_5,  GPIO.IN)
+GPIO.setup(BTN_PIN_6,  GPIO.IN)
 
 def buzz(pitch) :
     period = 1.0 / pitch
@@ -60,7 +59,7 @@ def buzz(pitch) :
         time.sleep(delay)
 
 def callback_function(channel):
-    print("Button.Click:"), channel, strftime(",%Y-%m-%d %H:%M:%S", gmtime())
+    print("Button.Click:"), channel, time.strftime(",%Y-%m-%d %H:%M:%S")
 
     if channel == BTN_PIN_0:
         buzz(MELODY_DO)

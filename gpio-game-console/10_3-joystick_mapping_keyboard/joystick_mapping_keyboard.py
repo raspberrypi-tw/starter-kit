@@ -65,6 +65,8 @@ try:
             device.emit(uinput.KEY_UP,   0) 
             device.emit(uinput.KEY_DOWN, 0) 
             time.sleep(0.1)
+        
+        time.sleep(0.1)
 
 except KeyboardInterrupt:
     print "Exception: KeyboardInterrupt"

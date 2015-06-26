@@ -20,7 +20,7 @@ GPIO.setmode(GPIO.BOARD)
 LED_PIN = 12
 PIR_PIN = 26
 BOUNCE_TIME = 200
-GPIO.setup(PIR_PIN, GPIO.IN,pull_up_down=GPIO.PUD_UP)
+GPIO.setup(PIR_PIN, GPIO.IN)
 GPIO.setup(LED_PIN, GPIO.OUT)
 
 def callback_function(channel):
