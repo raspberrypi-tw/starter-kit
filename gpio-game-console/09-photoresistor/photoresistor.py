@@ -43,5 +43,3 @@ try:
 except KeyboardInterrupt:
     print "Exception: KeyboardInterrupt"
 
-finally:
-    GPIO.cleanup()          
