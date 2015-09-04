@@ -16,12 +16,10 @@
 
 import uinput
 import time
-import RPi.GPIO as GPIO
 import spidev
 import os
 
-GPIO.setmode(GPIO.BOARD)
-events = (uinput.KEY_DOWN, uinput.KEY_UP, uinput.KEY_LEFT, uinput.KEY_RIGHT)
+events = (uinput.KEY_DOWN, uinput.KEY_UP, uinput.KEY_LEFT, uinput.KEY_RIGHT, uinput.KEY_ENTER)
 device = uinput.Device(events)
 
 spi = spidev.SpiDev()
@@ -32,13 +30,27 @@ def ReadChannel(channel):
     data = ((adc[1]&3) << 8) + adc[2]
     return data
 
+swt_channel = 0
 vrx_channel = 1 
 vry_channel = 2 
 
 try:
     while True:
+        swt_val = ReadChannel(swt_channel)
         vrx_pos = ReadChannel(vrx_channel)
         vry_pos = ReadChannel(vry_channel)
+
+        print "--------------------------------------------"  
+        print("X : {}  Y : {}  Switch : {}".format(vrx_pos,vry_pos,swt_val))
+
+        if swt_val > 1000:
+            device.emit(uinput.KEY_ENTER, 0) 
+            time.sleep(0.1)
+        elif swt_val < 100 :
+            device.emit(uinput.KEY_ENTER, 1) 
+            time.sleep(0.1)
+        else :
+            pass
 
         if vry_pos > 700 :
             #print("LEFT")
@@ -71,6 +83,4 @@ try:
 except KeyboardInterrupt:
     print "Exception: KeyboardInterrupt"
 
-finally:
-    GPIO.cleanup()          
 
