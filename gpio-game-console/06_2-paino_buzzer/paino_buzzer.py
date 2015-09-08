@@ -53,9 +53,9 @@ def buzz(pitch) :
     cycles = int(DURATION * pitch)
 
     for i in range(cycles) :
-        GPIO.output(BUZZER_PIN, True)
+        GPIO.output(BUZZER_PIN, GPIO.HIGH)
         time.sleep(delay)
-        GPIO.output(BUZZER_PIN, False)
+        GPIO.output(BUZZER_PIN, GPIO.LOW)
         time.sleep(delay)
 
 def callback_function(channel):

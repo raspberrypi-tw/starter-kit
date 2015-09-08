@@ -40,8 +40,8 @@ try:
         vrx_pos = ReadChannel(vrx_channel)
         vry_pos = ReadChannel(vry_channel)
 
-        print "--------------------------------------------"  
-        print("X : {}  Y : {}  Switch : {}".format(vrx_pos,vry_pos,swt_val))
+        #print "--------------------------------------------"  
+        #print("X : {}  Y : {}  Switch : {}".format(vrx_pos,vry_pos,swt_val))
 
         if swt_val > 1000:
             device.emit(uinput.KEY_ENTER, 0) 
@@ -52,12 +52,12 @@ try:
         else :
             pass
 
+        # LEFT
         if vry_pos > 700 :
-            #print("LEFT")
             device.emit(uinput.KEY_LEFT,  1) 
             time.sleep(0.1)
+        # RIGHT
         elif vry_pos < 100 :
-            #print("RIGHT")
             device.emit(uinput.KEY_RIGHT, 1) 
             time.sleep(0.1)
         else :
@@ -65,12 +65,13 @@ try:
             device.emit(uinput.KEY_LEFT,  0) 
             time.sleep(0.1)
 
+        # DOWN
         if vrx_pos > 700 :
             #print("DOWN")
             device.emit(uinput.KEY_DOWN, 1) 
             time.sleep(0.1)
+        # UP
         elif vrx_pos < 100 :
-            #print("UP")
             device.emit(uinput.KEY_UP,   1) 
             time.sleep(0.1)
         else :

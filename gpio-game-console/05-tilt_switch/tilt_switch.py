@@ -19,7 +19,7 @@ import time
 GPIO.setmode(GPIO.BOARD)                
 BTN_PIN = 11
 BOUNCE_TIME = 200
-GPIO.setup(BTN_PIN, GPIO.IN)
+GPIO.setup(BTN_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP, initial=GPIO.HIGH)
 
 def callback_function(channel):                                                 
     print("Tilt.Switch"), time.strftime("%Y-%m-%d %H:%M:%S")

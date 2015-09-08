@@ -20,7 +20,7 @@ GPIO.setmode(GPIO.BOARD)
 LED_PIN = 12
 GPIO.setup(LED_PIN, GPIO.OUT)
 
-pwm_led = GPIO.PWM(LED_PIN, 500)
+pwm_led = GPIO.PWM(LED_PIN, 50)
 pwm_led.start(100)
 
 try:
